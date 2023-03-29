@@ -10,7 +10,8 @@ import ru.vk.company.utils.ScreenShot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ExampleTest {
+// Демонстрируется самый элементарный вариант запуска тестов.
+class Example1StartTest {
 
     private static Playwright playwright;
     private static Browser browser;
