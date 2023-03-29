@@ -1,6 +1,7 @@
 package ru.vk.company;
 
 import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Playwright;
 import org.junit.jupiter.api.AfterAll;
@@ -12,7 +13,7 @@ import ru.vk.company.utils.ScreenShot;
 public class MusicTest {
 
     private static final String INSTASAMKA_TRACK_URI = "track/123251851019460?i=3";
-    private static final int LYRICS_TIMEOUT = 23_000;
+    private static final int LYRICS_TIMEOUT = 10_000;
     private static final int COMMON_DELAY = 160;
 
     private static Playwright playwright;
@@ -22,9 +23,9 @@ public class MusicTest {
     @BeforeAll
     static void setUp() {
         playwright = Playwright.create();
-        browser = playwright.webkit().launch();
+        browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
         musicPage = new MusicPage(browser.newPage());
-        musicPage.logInAs("botS23AT26", "autotests2023");
+        musicPage.login();
         musicPage.navigateTo();
     }
 
@@ -36,16 +37,16 @@ public class MusicTest {
 
     @Test
     public void openApplication() {
-        musicPage.getPage();
+        System.out.println(musicPage.getPage().title());
     }
 
     @Test
     public void checkTrackActionsMenuForVisibility() {
         Locator track = musicPage.getPage().locator("wm-track").first();
         track.hover();
-        track.locator("wm-track-actions").hover();
+        track.locator("wm-track-actions").hover(); // Будет ждать "wm-track-actions".
         musicPage.getPage().waitForTimeout(COMMON_DELAY);
-        track.locator("wm-track-actions-menu")
+        track.locator("wm-track-actions-menu") // Делаем скриншот отдельного элемента.
                 .screenshot(new Locator.ScreenshotOptions()
                 .setPath(ScreenShot.TRACK_ACTIONS_MENU.getPath()));
     }

@@ -24,7 +24,12 @@ public class MainPage extends AbstractPage {
         navigateTo();
         page.locator("#field_email").first().type(login);
         page.locator("#field_password").first().type(password);
+        // Возможность найти элемент по тексту.
         page.getByText("Войти в Одноклассники").first().click();
+    }
+
+    public void login() {
+        logInAs("botS23AT26", "autotests2023");
     }
 
     public String getTitle() {
