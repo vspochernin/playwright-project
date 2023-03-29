@@ -31,7 +31,7 @@ class Example1Test {
 
     @Test
     void checkTitleOfOKDotRU() {
-        mainPage.navigate();
+        mainPage.navigateTo();
         String title = mainPage.getTitle();
         System.out.println(title);
         assertTrue(title.length() > 0);
