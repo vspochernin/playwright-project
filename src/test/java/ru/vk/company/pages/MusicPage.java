@@ -3,6 +3,7 @@ package ru.vk.company.pages;
 import com.microsoft.playwright.Page;
 
 public class MusicPage extends MainPage {
+
     private static final String OK_MUSIC_URI = "music";
 
     public MusicPage(Page page) {

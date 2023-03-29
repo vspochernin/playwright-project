@@ -7,8 +7,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.vk.company.pages.MusicPage;
+import ru.vk.company.utils.ScreenShot;
 
 public class MusicTest {
+
     private static final String INSTASAMKA_TRACK_URI = "track/123251851019460?i=3";
     private static final int LYRICS_TIMEOUT = 23_000;
     private static final int COMMON_DELAY = 160;

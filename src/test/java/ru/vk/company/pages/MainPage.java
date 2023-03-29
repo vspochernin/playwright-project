@@ -3,6 +3,7 @@ package ru.vk.company.pages;
 import com.microsoft.playwright.Page;
 
 public class MainPage extends AbstractPage {
+
     private static final String OK_MAIN_PAGE_URL = "https://ok.ru/";
 
     public MainPage(Page page) {

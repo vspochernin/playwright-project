@@ -6,13 +6,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import ru.vk.company.pages.MainPage;
+import ru.vk.company.utils.ScreenShot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Example1Test {
+class ExampleTest {
 
     private static Playwright playwright;
     private static Browser browser;
+
     private static MainPage mainPage;
 
     @BeforeAll
@@ -20,6 +22,7 @@ class Example1Test {
         playwright = Playwright.create();
         browser = playwright.chromium().launch();
         Page page = browser.newPage();
+
         mainPage = new MainPage(page);
     }
 
@@ -32,8 +35,12 @@ class Example1Test {
     @Test
     void checkTitleOfOKDotRU() {
         mainPage.navigateTo();
+
         String title = mainPage.getTitle();
         System.out.println(title);
+
         assertTrue(title.length() > 0);
+
+        mainPage.getPage().screenshot(new Page.ScreenshotOptions().setPath(ScreenShot.EXAMPLE.getPath()));
     }
 }
